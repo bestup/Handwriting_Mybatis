@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE configuration PUBLIC   
+	    "-//mybatis.org//DTD Config 3.0//EN"  
+	    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+	<configuration>  
+		
+		<properties resource="database.properties"/>
+	
+		<!-- 可以配置多个环境，开发环境和测试环境 -->
+	    <environments default="development">  
+	    
+	    	<!-- 数据库连接信息可以直接写   mybatis-config.xml 配置文件中 -->
+	        <environment id="development">  
+	        	<!-- 事物管理器，采用jdbc事物 -->
+	            <transactionManager type="JDBC" /> 
+	            <!-- 配置数据源 -->  
+	            <dataSource type="POOLED">  
+	                <property name="driver" value="com.mysql.jdbc.Driver" />  
+	                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8" />  
+	                <property name="username" value="root" />  
+	                <property name="password" value="0000" />  
+	            </dataSource>  
+	        </environment> 
+	        
+	        <!-- 数据库连接信息也可以通过上面的属性配置文件获取
+	        <environment id="development">  
+	        	事物管理器，采用jdbc事物
+	            <transactionManager type="JDBC" /> 
+	            	配置数据源
+	            <dataSource type="POOLED">  
+	                <property name="driver" value="${jdbc.driver}" />  
+	                <property name="url" value="${jdbc.url}" />  
+	                <property name="username" value="${jdbc.username}" />  
+	                <property name="password" value="${jdbc.password}" />  
+	            </dataSource>  
+	        </environment> 
+	         -->
+	         
+	    </environments>  
+	    
+	    <mappers>  
+	        <mapper resource="com/mybatis/pojo/UserMapper.xml" />  
+	    </mappers>  
+	    
+	</configuration>  
+
